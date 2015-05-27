@@ -4,6 +4,8 @@
 #include <QtGui>
 #include <QInputDialog>
 
+#include "dialog.h"
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -11,7 +13,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle(QString("Okno 1"));
 
-
+    dialog = new Dialog(this);
+    dialog->setModal(true);
+    dialog->show();
 
     model = new QStringListModel(this);
     QStringList list;
@@ -19,6 +23,8 @@ MainWindow::MainWindow(QWidget *parent) :
     model->setStringList(list);
     ui->listView->setModel(model);
     ui->comboBox->setModel(model);
+
+
 
 }
 
@@ -29,6 +35,20 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_2_clicked()
 {
+    //Exit button
+    this->close();
 
+}
 
+void MainWindow::on_pushButton_3_clicked()
+{
+    //Insert button
+    int row = this->model->rowCount();
+    model->insertRows(row,1);
+    QModelIndex mi = model->index(row);
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    //Modify button
 }
