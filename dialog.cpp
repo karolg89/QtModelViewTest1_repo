@@ -12,3 +12,9 @@ Dialog::~Dialog()
 {
     delete ui;
 }
+
+void Dialog::on_pushButton_clicked()
+{
+    emit this->signal1(QString("SIGNAL 1"));
+    this->close();
+}

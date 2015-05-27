@@ -3,6 +3,8 @@
 #include <QtCore>
 #include <QtGui>
 #include <QInputDialog>
+#include <QMessageBox>
+
 
 #include "dialog.h"
 
@@ -51,4 +53,16 @@ void MainWindow::on_pushButton_3_clicked()
 void MainWindow::on_pushButton_clicked()
 {
     //Modify button
+
+    dialog = new Dialog(this);
+    connect(dialog,SIGNAL(signal1(QString)),this,SLOT(slot_1(QString)));
+    dialog->show();
+    //disconnect(dialog,SIGNAL(signal1(QString)),this,SLOT(slot_1(QString)));
+
+}
+
+
+void MainWindow::slot_1(QString s)
+{
+    QMessageBox::information(this,"Title",s);
 }

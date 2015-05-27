@@ -28,6 +28,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void slot_1(QString);
+
 private:
     Ui::MainWindow *ui;
     QStringListModel *model;
